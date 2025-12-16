@@ -1,0 +1,46 @@
+body { margin: 0; font-family: Arial; }
+
+.sidebar {
+width: 230px;
+height: 100vh;
+background: #0a1f44;
+color: white;
+position: fixed;
+padding: 20px;
+}
+
+
+.sidebar button, .sidebar input {
+width: 100%;
+margin: 8px 0;
+padding: 8px;
+}
+
+
+.content {
+margin-left: 250px;
+padding: 30px;
+display: none;
+}
+
+
+.home {
+display: block;
+height: 100vh;
+background: url('juit.jpg') no-repeat center/cover;
+color: white;
+}
+
+
+.panel {
+background: #d9f1ff;
+padding: 15px;
+border-radius: 8px;
+margin: 10px 0;
+}
+
+
+@media(max-width:768px){
+.sidebar{width:100%; height:auto; position:relative}
+.content{margin-left:0}
+}

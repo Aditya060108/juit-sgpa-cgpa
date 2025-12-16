@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JUIT SGPA & CGPA Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="sidebar">
+<h2>JUIT</h2>
+<input id="roll" placeholder="Enter Roll No">
+<button onclick="login()">Login</button>
+<hr>
+<button onclick="openSGPA()">SGPA Calculator</button>
+<button onclick="openCGPA()">CGPA Calculator</button>
+</div>
+
+
+<div class="content home" id="home">
+<h1>Jaypee University of Information Technology</h1>
+<p>SGPA & CGPA Calculator</p>
+</div>
+
+
+<div class="content" id="sgpa">
+<h2>SGPA Calculator</h2>
+Total Subjects:
+<input type="number" id="sgpaSubjects">
+<button onclick="generateSGPA()">Next</button>
+<form id="sgpaForm"></form>
+<h3 id="sgpaResult"></h3>
+</div>
+
+
+<div class="content" id="cgpa">
+<h2>CGPA Calculator</h2>
+Total Semesters:
+<input type="number" id="totalSems">
+<button onclick="generateCGPA()">Next</button>
+<form id="cgpaForm"></form>
+<h3 id="cgpaResult"></h3>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
