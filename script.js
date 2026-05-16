@@ -25,11 +25,32 @@ f.innerHTML+='<button type="button" onclick="calcSGPA()">Calculate SGPA</button>
 
 
 function calcSGPA(){
-const c=document.querySelectorAll('.credit');
-const g=document.querySelectorAll('.grade');
-let tc=0,tp=0;
-for(let i=0;i<c.length;i++){ tc+=+c[i].value; tp+=c[i].value*gradeMap[g[i].value]; }
-document.getElementById('sgpaResult').innerText='SGPA: '+(tp/tc).toFixed(2);
+  const c = document.querySelectorAll('.credit');
+  const g = document.querySelectorAll('.grade');
+  
+  // Validate inputs
+  if (c.length === 0) {
+    alert('Please add at least one subject');
+    return;
+  }
+  
+  let tc = 0, tp = 0;
+  for(let i = 0; i < c.length; i++){
+    const credits = parseFloat(c[i].value);
+    if (isNaN(credits) || credits <= 0) {
+      alert('Invalid credits in subject ' + (i+1));
+      return;
+    }
+    tc += credits;
+    tp += credits * gradeMap[g[i].value];
+  }
+  
+  if (tc === 0) {
+    alert('Total credits cannot be zero');
+    return;
+  }
+  
+  document.getElementById('sgpaResult').innerText = 'SGPA: ' + (tp/tc).toFixed(2);
 }
 
 
@@ -44,9 +65,34 @@ f.innerHTML+='<button type="button" onclick="calcCGPA()">Calculate CGPA</button>
 
 
 function calcCGPA(){
-const s=document.querySelectorAll('.sem');
-const c=document.querySelectorAll('.semc');
-let tc=0,tp=0;
-for(let i=0;i<s.length;i++){ tc+=+c[i].value; tp+=s[i].value*c[i].value; }
-document.getElementById('cgpaResult').innerText='CGPA: '+(tp/tc).toFixed(2);
+  const s = document.querySelectorAll('.sem');
+  const c = document.querySelectorAll('.semc');
+  
+  if (s.length === 0) {
+    alert('Please add at least one semester');
+    return;
+  }
+  
+  let tc = 0, tp = 0;
+  for(let i = 0; i < s.length; i++){
+    const credits = parseFloat(c[i].value);
+    const sgpa = parseFloat(s[i].value);
+    if (isNaN(credits) || credits <= 0) {
+      alert('Invalid credits in semester ' + (i+1));
+      return;
+    }
+    if (isNaN(sgpa)) {
+      alert('Invalid SGPA in semester ' + (i+1));
+      return;
+    }
+    tc += credits;
+    tp += sgpa * credits;
+  }
+  
+  if (tc === 0) {
+    alert('Total credits cannot be zero');
+    return;
+  }
+  
+  document.getElementById('cgpaResult').innerText = 'CGPA: ' + (tp/tc).toFixed(2);
 }
